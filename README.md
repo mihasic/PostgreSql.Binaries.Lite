@@ -2,7 +2,7 @@
 
 Minimum set of binaries of the PostgreSQL database.
 
-The one in this file contains postgresql-9.6.2-4-windows-x64.zip without doc, include, pgAdmin 4, StackBuilder and symbols.
+The one in this file contains postgresql-9.6.3-1-windows-x64.zip without doc, include, pgAdmin 4, StackBuilder and symbols.
 So, this package can be consumed from the unit tests.
 Sample commands to setup a database cluster would be:
 
@@ -17,6 +17,7 @@ By default, this will start a database (postgres) and allow postgres user access
 
 ### NuGet
     https://www.nuget.org/packages/PostgreSql.Binaries.Lite/
+    https://www.nuget.org/packages/PostgreSql.Binaries.Lite.Plv8/
 
     nuget install PostgreSql.Binaries.Lite
 
