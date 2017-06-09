@@ -96,3 +96,7 @@ task RunTests -depends Compile {
         rm $temp_path -Recurse -Force
     }
 }
+```
+
+## License
+Scrips in this repository are subject to MIT license, PostgreSQL is licensed under: https://www.postgresql.org/about/licence/
