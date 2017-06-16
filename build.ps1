@@ -11,3 +11,4 @@ if ($build_number -eq 0) {
 }
 
 .\nuget.exe pack .\postgresql.binaries.lite.nuspec -version $packageVersion
+.\nuget.exe pack .\postgresql.binaries.lite.plv8.nuspec -version $packageVersion
