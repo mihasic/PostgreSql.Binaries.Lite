@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>PostgreSql.Binaries.Lite.Plv8</id>
-        <version>9.6.5.1</version>
+        <version>10.0.1</version>
         <authors>M.Rybnikov</authors>
         <owners>M.Rybnikov</owners>
         <licenseUrl>https://www.postgresql.org/about/licence/</licenseUrl>
@@ -10,8 +10,8 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <developmentDependency>true</developmentDependency>
         <description>Minimum set of binaries of the PostgreSQL database.
-            The one in this file contains postgresql-9.6.5-1-windows-x64.zip without doc, include, pgAdmin 4, StackBuilder and symbols.
-            Additionally package includes PostgreSQL 9.6beta1 plv8 64-bit - PL/V8 1.4.8 from http://www.postgresonline.com/journal/archives/367-PLV8-binaries-for-PostgreSQL-9.6beta1-windows-both-32-bit-and-64-bit.html.
+            The one in this file contains postgresql-10.0-1-windows-x64.zip without doc, include, pgAdmin 4, StackBuilder and symbols.
+            Additionally package includes PostgreSQL 10 plv8 64-bit - PL/V8 1.4.10 from http://www.postgresonline.com/downloads/pg10plv8jsbin_w64.zip.
             So, this package can be consumed from the unit tests.
             Sample commands to setup a database cluster would be:
                 - extract
