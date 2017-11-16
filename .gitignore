@@ -27,3 +27,7 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+*.zip
+*.exe
+pgsql/
+pg96plv8jsbin_w64/
