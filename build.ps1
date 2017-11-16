@@ -1,6 +1,6 @@
 param(
     [int] $build_number = 0,
-    [string] $version = '10.0-1',
+    [string] $version = '10.1-2',
     [string]$nugetApiKey = $null
 )
 $ErrorActionPreference = "Stop"
@@ -20,8 +20,8 @@ $plv8_package = "postgresql-$($version)-windows-x64-binaries-lite-plv8.zip"
 
 # clean
 Write-Host "Cleaning..."
-Remove-Item .\pgsql -Recurse -Force
-Remove-Item .\pg10plv8jsbin_w64 -Recurse -Force
+if (Test-Path .\pgsql) { Remove-Item .\pgsql -Recurse -Force }
+if (Test-Path .\pg10plv8jsbin_w64) { Remove-Item .\pg10plv8jsbin_w64 -Recurse -Force }
 Remove-Item *.nupkg,*.exe,*.zip
 
 # download
