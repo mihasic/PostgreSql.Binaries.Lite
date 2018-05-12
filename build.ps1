@@ -1,6 +1,6 @@
 param(
     [int] $build_number = 0,
-    [string] $version = '9.6.8-1',
+    [string] $version = '9.6.9-1',
     [string]$nugetApiKey = $null
 )
 $ErrorActionPreference = "Stop"
