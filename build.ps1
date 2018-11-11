@@ -1,11 +1,11 @@
 param(
     [int] $build_number = 0,
-    [string] $version = '9.6.10-1',
-    [string]$nugetApiKey = $null
+    [string] $version = '9.6.11-1',
+    [string] $nugetApiKey = $null
 )
 $ErrorActionPreference = "Stop"
 
-$baseDir = Split-Path $MyInvocation.MyCommand.Path
+$baseDir = $PSScriptRoot
 
 $nugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 
@@ -49,14 +49,14 @@ Get-ChildItem .\pgsql -Exclude bin,lib,share | Remove-Item -Recurse -Force
 
 # packing archives
 Write-Output "Archiving $base_package"
-[System.IO.Compression.ZipFile]::CreateFromDirectory("$baseDir\pgsql", $base_package, `
+[System.IO.Compression.ZipFile]::CreateFromDirectory("$baseDir\pgsql", "$baseDir\$base_package", `
     [System.IO.Compression.CompressionLevel]::Optimal, $true)
 
 Write-Output "Copying plv8 into pgsql..."
 Copy-Item ".\$($plv8_name)\*" .\pgsql -Recurse -Force
 
 Write-Output "Archiving $plv8_package"
-[System.IO.Compression.ZipFile]::CreateFromDirectory("$baseDir\pgsql", $plv8_package, `
+[System.IO.Compression.ZipFile]::CreateFromDirectory("$baseDir\pgsql", "$baseDir\$plv8_package", `
     [System.IO.Compression.CompressionLevel]::Optimal, $true)
 
 # packaging
