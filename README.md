@@ -2,7 +2,7 @@
 
 Minimum set of binaries of the PostgreSQL database.
 
-The one in this file contains postgresql-9.5.15-1-windows-x64.zip without doc, include, pgAdmin III, StackBuilder and symbols.
+The one in this file contains postgresql-9.5.16-1-windows-x64.zip without doc, include, pgAdmin III, StackBuilder and symbols.
 So, this package can be consumed from the unit tests.
 Sample commands to setup a database cluster would be:
 

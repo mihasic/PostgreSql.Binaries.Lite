@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>PostgreSql.Binaries.Lite.Plv8</id>
-        <version>9.5.15.1</version>
+        <version>9.5.16.1</version>
         <authors>M.Rybnikov</authors>
         <owners>M.Rybnikov</owners>
         <licenseUrl>https://www.postgresql.org/about/licence/</licenseUrl>
@@ -10,7 +10,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <developmentDependency>true</developmentDependency>
         <description>Minimum set of binaries of the PostgreSQL database.
-            The one in this file contains postgresql-9.5.15-1-windows-x64-plv8.zip without doc, include, pgAdmin III, StackBuilder and symbols.
+            The one in this file contains postgresql-9.5.16-1-windows-x64-plv8.zip without doc, include, pgAdmin III, StackBuilder and symbols.
             Additionally package includes PostgreSQL 9.5 plv8 64-bit - PL/V8 1.4.4 from http://www.postgresonline.com/downloads/pg95plv8jsbin_w64.zip.
             So, this package can be consumed from the unit tests.
             Sample commands to setup a database cluster would be:
@@ -23,7 +23,7 @@
             By default, this will start a database (postgres) and allow postgres user accessing it locally with any password (auth_method = trust).
         </description>
         <summary>A minimum package of PostgreSQL binaries suitable to run in the embedded scenario (tests).</summary>
-        <copyright>mihasic 2018</copyright>
+        <copyright>mihasic 2019</copyright>
         <tags>postgresql x64</tags>
     </metadata>
     <files>
