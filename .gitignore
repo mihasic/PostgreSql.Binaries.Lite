@@ -29,5 +29,8 @@ _ReSharper*/
 # ignore binaries from now on
 *.exe
 *.zip
+*.tar.gz
+packages
 pgsql
+linux
 *plv8jsbin_w64

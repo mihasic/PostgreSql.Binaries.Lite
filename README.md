@@ -1,8 +1,8 @@
-# PostgreSQL binaries for win64 lite
+# PostgreSQL binaries for win64 & linux64 lite
 
 Minimum set of binaries of the PostgreSQL database.
 
-The one in this file contains postgresql-10.6-1-windows-x64.zip without doc, include, pgAdmin 4, StackBuilder and symbols.
+The one in this file contains postgresql-10.6-1-windows-x64.zip, and postgresql-10.6-1-linux-x64.zip without doc, include, pgAdmin 4, StackBuilder and symbols.
 So, this package can be consumed from the unit tests.
 Sample commands to setup a database cluster would be:
 
@@ -99,4 +99,4 @@ task RunTests -depends Compile {
 ```
 
 ## License
-Scrips in this repository are subject to MIT license, PostgreSQL is licensed under: https://www.postgresql.org/about/licence/
+Scripts in this repository are subject to MIT license, PostgreSQL is licensed under: https://www.postgresql.org/about/licence/
