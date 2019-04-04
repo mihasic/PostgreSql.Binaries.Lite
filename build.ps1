@@ -42,24 +42,15 @@ Write-Output "Downloading $plv8_filename..."
 Invoke-WebRequest -Uri $plv8_url -OutFile $plv8_filename
 
 # unpack
-Add-Type -AssemblyName System.IO.Compression.FileSystem
-
 Write-Output "Extracting $filename..."
-[System.IO.Compression.ZipFile]::ExtractToDirectory("$baseDir\$filename", "$baseDir\")
+Expand-Archive -Path "$baseDir\$filename" -DestinationPath $baseDir
 
-Write-Output "Install SharpZipLib for tar.gz support..."
-Install-Package SharpZipLib -Destination packages -RequiredVersion 1.1.0
-Add-Type -Path "packages/SharpZipLib.1.1.0/lib/netstandard2.0/ICSharpCode.SharpZipLib.dll"
-
+Install-Module -Name 7Zip4Powershell
 Write-Output "Extracting $linux_filename..."
-$file = [IO.File]::OpenRead($linux_filename)
-$inStream = New-Object -TypeName ICSharpCode.SharpZipLib.GZip.GZipInputStream $file
-$tarIn = New-Object -TypeName ICSharpCode.SharpZipLib.Tar.TarInputStream $inStream
-$archive = [ICSharpCode.SharpZipLib.Tar.TarArchive]::CreateInputTarArchive($tarIn)
-$archive.ExtractContents("$baseDir\linux")
+Expand-7Zip "$linux_filename" "$baseDir\linux"
 
 Write-Output "Extracting $plv8_filename..."
-[System.IO.Compression.ZipFile]::ExtractToDirectory("$baseDir\$plv8_filename", "$baseDir\")
+Expand-Archive -Path "$baseDir\$plv8_filename" -DestinationPath $baseDir
 
 # clean
 Write-Host "Cleaning pgsql..."
@@ -70,19 +61,16 @@ Get-ChildItem .\linux\pgsql -Exclude bin,lib,share | Remove-Item -Recurse -Force
 
 # packing archives
 Write-Output "Archiving $base_package"
-[System.IO.Compression.ZipFile]::CreateFromDirectory("$baseDir\pgsql", "$PSScriptRoot\$base_package", `
-    [System.IO.Compression.CompressionLevel]::Optimal, $true)
+Compress-Archive -Path "$baseDir\pgsql" -DestinationPath "$PSScriptRoot\$base_package"
 
 Write-Output "Archiving $linux_package"
-[System.IO.Compression.ZipFile]::CreateFromDirectory("$baseDir\linux\pgsql", "$PSScriptRoot\$linux_package", `
-    [System.IO.Compression.CompressionLevel]::Optimal, $true)
+Compress-Archive -Path "$baseDir\linux\pgsql" -DestinationPath "$PSScriptRoot\$linux_package"
 
 Write-Output "Copying plv8 into pgsql..."
 Copy-Item .\pg10plv8jsbin_w64\* .\pgsql -Recurse -Force
 
 Write-Output "Archiving $plv8_package"
-[System.IO.Compression.ZipFile]::CreateFromDirectory("$baseDir\pgsql", "$PSScriptRoot\$plv8_package", `
-    [System.IO.Compression.CompressionLevel]::Optimal, $true)
+Compress-Archive -Path "$baseDir\pgsql" -DestinationPath "$PSScriptRoot\$plv8_package"
 
 # packaging
 $packageVersion = $version.Replace('-', '.')
