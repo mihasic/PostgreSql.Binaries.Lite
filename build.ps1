@@ -45,7 +45,7 @@ Invoke-WebRequest -Uri $plv8_url -OutFile $plv8_filename
 Write-Output "Extracting $filename..."
 Expand-Archive -Path "$baseDir\$filename" -DestinationPath $baseDir
 
-Install-Module -Name 7Zip4Powershell
+Install-Package -Scope CurrentUser -Force 7Zip4PowerShell
 Write-Output "Extracting $linux_filename..."
 Expand-7Zip "$linux_filename" "$baseDir\linux"
 
