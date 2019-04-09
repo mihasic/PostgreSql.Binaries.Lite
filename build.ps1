@@ -50,7 +50,7 @@ Install-Package SharpZipLib -Destination packages -RequiredVersion 1.1.0 -Force 
 Add-Type -Path "packages/SharpZipLib.1.1.0/lib/netstandard2.0/ICSharpCode.SharpZipLib.dll"
 
 Write-Output "Extracting $linux_filename..."
-$file = [IO.File]::OpenRead($linux_filename)
+$file = [IO.File]::OpenRead("$PWD\$linux_filename")
 $inStream = New-Object -TypeName ICSharpCode.SharpZipLib.GZip.GZipInputStream $file
 $tarIn = New-Object -TypeName ICSharpCode.SharpZipLib.Tar.TarInputStream $inStream
 $archive = [ICSharpCode.SharpZipLib.Tar.TarArchive]::CreateInputTarArchive($tarIn)
