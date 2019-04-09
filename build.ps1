@@ -1,7 +1,7 @@
 param(
     [int] $build_number = 0,
     [string] $version = '10.7-1',
-    [string]$nugetApiKey = $null
+    [string] $nugetApiKey = $null
 )
 $ErrorActionPreference = "Stop"
 
@@ -46,7 +46,7 @@ Write-Output "Extracting $filename..."
 Expand-Archive -Path "$baseDir\$filename" -DestinationPath $baseDir
 
 Write-Output "Install SharpZipLib for tar.gz support..."
-Install-Package SharpZipLib -Destination packages -RequiredVersion 1.1.0
+Install-Package SharpZipLib -Destination packages -RequiredVersion 1.1.0 -Confirm
 Add-Type -Path "packages/SharpZipLib.1.1.0/lib/netstandard2.0/ICSharpCode.SharpZipLib.dll"
 
 Write-Output "Extracting $linux_filename..."
