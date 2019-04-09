@@ -45,9 +45,16 @@ Invoke-WebRequest -Uri $plv8_url -OutFile $plv8_filename
 Write-Output "Extracting $filename..."
 Expand-Archive -Path "$baseDir\$filename" -DestinationPath $baseDir
 
-Install-Package -Scope CurrentUser -Force 7Zip4PowerShell -Source PSGallery
+Write-Output "Install SharpZipLib for tar.gz support..."
+Install-Package SharpZipLib -Destination packages -RequiredVersion 1.1.0
+Add-Type -Path "packages/SharpZipLib.1.1.0/lib/netstandard2.0/ICSharpCode.SharpZipLib.dll"
+
 Write-Output "Extracting $linux_filename..."
-Expand-7Zip "$linux_filename" "$baseDir\linux"
+$file = [IO.File]::OpenRead($linux_filename)
+$inStream = New-Object -TypeName ICSharpCode.SharpZipLib.GZip.GZipInputStream $file
+$tarIn = New-Object -TypeName ICSharpCode.SharpZipLib.Tar.TarInputStream $inStream
+$archive = [ICSharpCode.SharpZipLib.Tar.TarArchive]::CreateInputTarArchive($tarIn)
+$archive.ExtractContents("$baseDir\linux")
 
 Write-Output "Extracting $plv8_filename..."
 Expand-Archive -Path "$baseDir\$plv8_filename" -DestinationPath $baseDir
