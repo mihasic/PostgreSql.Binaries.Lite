@@ -46,7 +46,7 @@ Write-Output "Extracting $filename..."
 Expand-Archive -Path "$baseDir\$filename" -DestinationPath $baseDir
 
 Write-Output "Install SharpZipLib for tar.gz support..."
-Install-Package SharpZipLib -Destination packages -RequiredVersion 1.1.0 -Confirm
+Install-Package SharpZipLib -Destination packages -RequiredVersion 1.1.0 -Force -SkipValidate
 Add-Type -Path "packages/SharpZipLib.1.1.0/lib/netstandard2.0/ICSharpCode.SharpZipLib.dll"
 
 Write-Output "Extracting $linux_filename..."
